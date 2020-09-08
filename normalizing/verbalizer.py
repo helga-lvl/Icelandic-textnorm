@@ -10,8 +10,8 @@ import copy
 from timeit import default_timer as timer
 import re
 from fst_compiler import FST_Compiler
-from utt_coll import TokenType
-from verbalized import Verbalized
+from utterance_structure.utt_coll import TokenType
+from utterance_structure.verbalized import Verbalized
 
 
 class Verbalizer:
@@ -230,7 +230,7 @@ class Verbalizer:
         fst_size = verbalized_fst.num_states()
         #verbalized_fst.draw('verbalized.dot')
         verbalized_fst.optimize()
-        verbalized_fst.project(True)
+        #verbalized_fst.project(True)
         verbalized_fst.rmepsilon()
         #verbalized_fst.draw('verbalized_final.dot')
 
@@ -345,7 +345,7 @@ class Verbalizer:
         replacement_dicts = {}
         for verbal_arr in verbalization.paths:
             shortest_path = self._language_model_scoring(verbal_arr)
-            normalized_text = shortest_path.stringify(token_type=self.word_symbols)
+            normalized_text = shortest_path.string(token_type=self.word_symbols)
             normalized[normalized_text] = pn.shortestdistance(shortest_path)
             replacement_dicts[normalized_text] = copy.deepcopy(self.replacement_dict)
 
@@ -395,7 +395,7 @@ class Verbalizer:
         #self.replacement_dict = self.compiler.replacement_dict
         word_fst.set_output_symbols(self.word_symbols)
         word_fst.optimize()
-        word_fst.project(True)
+        #word_fst.project(True)
         word_fst.arcsort()
         #word_fst.draw('word_fst.dot')
         lm_intersect = pn.intersect(word_fst, self.lm)
