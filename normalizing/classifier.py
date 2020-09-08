@@ -54,7 +54,7 @@ class Classifier:
 
     def _create_classified_string(self, classified_fst):
         try:
-            classified = classified_fst.stringify(token_type=self.utf8_symbols)
+            classified = classified_fst.string(token_type=self.utf8_symbols)
             # the classified results are character based, combine the chars to words again
             classified = classified.replace(' ', '')
             # the real word separators are encoded with unicode representation of SPACE, replace that with ' '
