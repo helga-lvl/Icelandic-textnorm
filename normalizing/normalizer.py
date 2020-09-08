@@ -197,10 +197,10 @@ def main():
                  "DNA-rannsóknir eða rannsóknir á kjarnasýrunum."
 
 
-    inp = 'test_from_training_data_visir201303.txt'
-    output = '../evaluation/eval_results_final/training_test_MIXED.txt'
+    inp = 'input2.txt'
+    output = 'output2.txt'
     input_text = open(inp).read().splitlines()
-    norm = Normalizer(test_mode=True, tag_mode=False)
+    norm = Normalizer(test_mode=False, tag_mode=False)
     #inp = ' Bryndís Rún Hansen varð annar Íslendingurinn á HM í 25 m laug í Kanada til að komast í undanúrslit í sinni grein en það gerði hún í 50 m flugsundi nú síðdegis .'
     #inp = 'Um 2 prósent nefna og 3 prósent'
     #normalized = norm.normalize(inp)
