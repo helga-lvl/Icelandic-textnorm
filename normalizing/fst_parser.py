@@ -127,7 +127,7 @@ class FSTParser:
                 self._prev_state() # unconsume the curly brace
                 return ''.join(value_arr)
             elif self.out_label:
-                value_arr.append(self.utf8_symbols.find(self.out_label).decode('utf-8'))
+                value_arr.append(self.utf8_symbols.find(self.out_label))
 
     def _parse_quoted_field_value(self, arr):
 
@@ -135,7 +135,7 @@ class FSTParser:
             if self.out_label == EPSILON:
                 continue
             if self.out_label != QUOTES:
-                arr.append(self.utf8_symbols.find(self.out_label).decode('utf-8'))
+                arr.append(self.utf8_symbols.find(self.out_label))
             else:
                 return arr
 
@@ -146,9 +146,9 @@ class FSTParser:
             if (self.out_label == SPACE and not label_arr) or self.out_label == EPSILON:
                 continue
             elif not self._is_separator(self.out_label):
-                label_arr.append(self.utf8_symbols.find(self.out_label).decode('utf-8'))
+                label_arr.append(self.utf8_symbols.find(self.out_label))
             elif self.out_label == CURLY_CLOSE and not label_arr:
-                label_arr.append(self.utf8_symbols.find(self.out_label).decode('utf-8'))
+                label_arr.append(self.utf8_symbols.find(self.out_label))
                 break
             else:
                 #if self.out_label != COLON and self.out_label != SPACE:
@@ -183,7 +183,7 @@ class FSTParser:
             if self.inp_label == SPACE and not self.token_name:
                 self.token_start += 1
             else:
-                self.token_name += self.utf8_symbols.find(self.inp_label).decode('utf-8')
+                self.token_name += self.utf8_symbols.find(self.inp_label)
 
         self.last_state = self.state
         self.state = arc_it.value().nextstate
