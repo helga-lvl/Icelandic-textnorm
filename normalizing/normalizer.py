@@ -197,8 +197,8 @@ def main():
                  "DNA-rannsóknir eða rannsóknir á kjarnasýrunum."
 
 
-    inp = 'input2.txt'
-    output = 'output2.txt'
+    inp = 'input.txt'
+    output = 'output.txt'
     input_text = open(inp).read().splitlines()
     norm = Normalizer(test_mode=False, tag_mode=False)
     #inp = ' Bryndís Rún Hansen varð annar Íslendingurinn á HM í 25 m laug í Kanada til að komast í undanúrslit í sinni grein en það gerði hún í 50 m flugsundi nú síðdegis .'
